@@ -2481,8 +2481,16 @@ class Person(models.Model):
     birthtime = models.TimeField(blank=True, null=True)
     cause_of_death_non_coded = models.CharField(max_length=255, blank=True, null=True)
 
+    def __str__(self: 'Person'):
+        try:
+            name0 = self.personname_set.get(preferred=1)
+        except PersonName.DoesNotExist:
+            name0 = "NO NAME"
+        return f"{str(name0)} // DoB {self.birthdate}"
+
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'person'
 
 

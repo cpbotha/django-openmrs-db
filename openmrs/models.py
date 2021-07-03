@@ -639,22 +639,27 @@ class ConceptName(models.Model):
     name = models.CharField(max_length=255)
     locale = models.CharField(max_length=50)
     locale_preferred = models.IntegerField(blank=True, null=True)
-    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator')
+    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator', related_name="conceptnames_created")
     date_created = models.DateTimeField()
     concept_name_type = models.CharField(max_length=50, blank=True, null=True)
     voided = models.IntegerField()
-    voided_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='voided_by', blank=True, null=True)
+    voided_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='voided_by', blank=True, null=True, related_name="conceptnames_voided")
     date_voided = models.DateTimeField(blank=True, null=True)
     void_reason = models.CharField(max_length=255, blank=True, null=True)
     uuid = models.CharField(unique=True, max_length=38)
     date_changed = models.DateTimeField(blank=True, null=True)
-    changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True)
+    changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True, related_name="conceptnames_changed")
+
+    def __str__(self: 'ConceptName'):
+        return self.name
 
     class Meta:
         managed = False
         db_table = 'concept_name'
 
 
+# ConceptNameTag is not used so often:
+# https://talk.openmrs.org/t/whats-the-purpose-and-use-of-concept-name-tag/3368/3
 class ConceptNameTag(models.Model):
     concept_name_tag_id = models.AutoField(primary_key=True)
     tag = models.CharField(unique=True, max_length=50)

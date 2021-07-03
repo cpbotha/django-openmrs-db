@@ -1,3 +1,7 @@
+# OpenMRS 2.11+ models for Django
+# this file is copyright Charl P. Botha <cpbotha@vxlabs.com> 2021
+# plan is to release as open source
+
 # this file was generated on top of an openmrs-qa (dev) ref app on 2021-06-26
 
 # we set default_related_name = '+' on most models to get the system running

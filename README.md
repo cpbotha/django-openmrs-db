@@ -1,8 +1,9 @@
-Welcome to django-openmrs-db, a Django app for talking directly to the OpenMRS
-database.
+Welcome to django-openmrs-db, a [Django](https://www.djangoproject.com/) app for
+talking directly to the [OpenMRS](https://openmrs.org/) database.
 
 This work is copyright Charl P. Botha <cpbotha@vxlabs.com> 2021 and is made
 available under the open source BSD 3-clause license.
+
 ## Installation
 
 In theory, the following should work.

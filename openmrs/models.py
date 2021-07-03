@@ -2014,6 +2014,7 @@ class NotificationTemplate(models.Model):
 class Obs(models.Model):
     obs_id = models.AutoField(primary_key=True)
     person = models.ForeignKey('Person', models.DO_NOTHING)
+    # this defines what this is a measurement of
     concept = models.ForeignKey(Concept, models.DO_NOTHING)
     encounter = models.ForeignKey(Encounter, models.DO_NOTHING, blank=True, null=True)
     order = models.ForeignKey('Orders', models.DO_NOTHING, blank=True, null=True)
@@ -2022,7 +2023,8 @@ class Obs(models.Model):
     obs_group = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
     accession_number = models.CharField(max_length=255, blank=True, null=True)
     value_group_id = models.IntegerField(blank=True, null=True)
-    value_coded = models.ForeignKey(Concept, models.DO_NOTHING, db_column='value_coded', blank=True, null=True)
+    # come up with better related_name when I better understand this relation
+    value_coded = models.ForeignKey(Concept, models.DO_NOTHING, db_column='value_coded', blank=True, null=True, related_name="+")
     value_coded_name = models.ForeignKey(ConceptName, models.DO_NOTHING, blank=True, null=True)
     value_drug = models.ForeignKey(Drug, models.DO_NOTHING, db_column='value_drug', blank=True, null=True)
     value_datetime = models.DateTimeField(blank=True, null=True)
@@ -2031,17 +2033,21 @@ class Obs(models.Model):
     value_text = models.TextField(blank=True, null=True)
     value_complex = models.CharField(max_length=1000, blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
-    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator')
+    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator', related_name="observations_created")
     date_created = models.DateTimeField()
     voided = models.IntegerField()
     voided_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='voided_by', blank=True, null=True)
     date_voided = models.DateTimeField(blank=True, null=True)
     void_reason = models.CharField(max_length=255, blank=True, null=True)
     uuid = models.CharField(unique=True, max_length=38)
-    previous_version = models.ForeignKey('self', models.DO_NOTHING, db_column='previous_version', blank=True, null=True)
+    previous_version = models.ForeignKey('self', models.DO_NOTHING, db_column='previous_version', blank=True, null=True, related_name="subsequent_versions")
     form_namespace_and_path = models.CharField(max_length=255, blank=True, null=True)
     status = models.CharField(max_length=16)
     interpretation = models.CharField(max_length=32, blank=True, null=True)
+
+    def __str__(self: 'Obs'):
+        #return f"{self.concept.short_name} - {self.concept.description}"
+        return f"{str(self.concept)} -- {self.value_numeric}"
 
     class Meta:
         managed = False

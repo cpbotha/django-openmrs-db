@@ -1,10 +1,18 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
+# this file was generated on top of an openmrs-qa (dev) ref app on 2021-06-26
+
+# we set default_related_name = '+' on most models to get the system running
+# https://docs.djangoproject.com/en/dev/ref/models/options/#django.db.models.Options.default_related_name
+# and then started to set related_name better on the models that we were using
+
+# we have also started impementing __str__() calls for the most important models
+# so that they appear with usable names in the admin interface
+
+# guidelines
+# ==========
+# - we would like to maintain backwards compatibility with true OpenMRS, so keep
+#   db_table and db_column instances the same
+# - as far as possible, keep field names the same for parity with the OpenMRS API
+
 from django.db import models
 
 

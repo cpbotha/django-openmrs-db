@@ -2627,6 +2627,11 @@ class PersonName(models.Model):
         managed = False
         db_table = 'person_name'
 
+    def __str__(self):
+        # TODO: logic to use all of the other fields to construct correct display name
+        return f"{self.family_name}, {self.given_name}"
+
+
 
 class Privilege(models.Model):
     privilege = models.CharField(primary_key=True, max_length=255)

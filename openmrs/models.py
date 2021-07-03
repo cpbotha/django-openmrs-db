@@ -467,17 +467,22 @@ class Concept(models.Model):
     description = models.TextField(blank=True, null=True)
     form_text = models.TextField(blank=True, null=True)
     datatype = models.ForeignKey('ConceptDatatype', models.DO_NOTHING)
+    # the type of concept, e.g. Test, Procedure, etc.
     class_field = models.ForeignKey('ConceptClass', models.DO_NOTHING, db_column='class_id')  # Field renamed because it was a Python reserved word.
     is_set = models.IntegerField()
-    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator')
+    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator', related_name="concepts_created")
     date_created = models.DateTimeField()
     version = models.CharField(max_length=50, blank=True, null=True)
-    changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True)
+    changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True, related_name="concepts_changed")
     date_changed = models.DateTimeField(blank=True, null=True)
-    retired_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='retired_by', blank=True, null=True)
+    retired_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='retired_by', blank=True, null=True, related_name="concepts_retired")
     date_retired = models.DateTimeField(blank=True, null=True)
     retire_reason = models.CharField(max_length=255, blank=True, null=True)
     uuid = models.CharField(unique=True, max_length=38)
+
+    def __str__(self: 'Concept'):
+        # there can be multiple ConceptNames per locale, so we pick the preferred one
+        return self.conceptname_set.get(locale='en', locale_preferred=1).name
 
     class Meta:
         managed = False

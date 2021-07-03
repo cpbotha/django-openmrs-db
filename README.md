@@ -19,6 +19,9 @@ Add `openmrs_db` to your `INSTALLED_APPS`, hook up your Django to the
 pre-initialised OpenMRS database, and you should be able to access everything
 via the Django ORM.
 
+You should be able to interact with a number of the OpenMRS database tables via
+the Django admin.
+
 ## Examples
 
 ### Django settings DATABASES

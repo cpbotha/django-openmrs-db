@@ -460,6 +460,8 @@ class CohortMember(models.Model):
         db_table = 'cohort_member'
 
 
+# important to understand concepts. Please read at least this:
+# https://wiki.openmrs.org/display/docs/Concept+Dictionary+Basics
 class Concept(models.Model):
     concept_id = models.AutoField(primary_key=True)
     retired = models.IntegerField()

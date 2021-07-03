@@ -18,3 +18,27 @@ pip install git+https://github.com/cpbotha/django-openmrs-db.git@main
 Add `openmrs_db` to your `INSTALLED_APPS`, hook up your Django to the
 pre-initialised OpenMRS database, and you should be able to access everything
 via the Django ORM.
+
+## Examples
+
+### Django settings DATABASES
+
+If you're connecting directly to the [OpenMRS reference application
+docker-compose
+setup's](https://github.com/openmrs/openmrs-contrib-ansible-docker-compose/tree/master/files/qa-refapp)
+mysql instance, with ports forwarded to the host, your Django database setup
+could look like this:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'openmrs',
+        'USER': 'openmrs',
+        'PASSWORD': 'Admin123',
+        # if this is localhost, mysql will attempt connecting via socket
+        'HOST': '127.0.0.1',
+        'PORT': '3306',        
+    }
+}
+```

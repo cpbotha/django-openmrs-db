@@ -3397,7 +3397,7 @@ class Users(models.Model):
 
 class Visit(models.Model):
     visit_id = models.AutoField(primary_key=True)
-    patient = models.ForeignKey(Patient, models.DO_NOTHING)
+    patient = models.ForeignKey(Patient, models.DO_NOTHING, related_name='visit_set')
     visit_type = models.ForeignKey('VisitType', models.DO_NOTHING)
     date_started = models.DateTimeField()
     date_stopped = models.DateTimeField(blank=True, null=True)

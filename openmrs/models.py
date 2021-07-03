@@ -24,6 +24,7 @@ class AddressHierarchyAddressToEntryMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'address_hierarchy_address_to_entry_map'
 
 
@@ -40,6 +41,7 @@ class AddressHierarchyEntry(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'address_hierarchy_entry'
 
 
@@ -53,6 +55,7 @@ class AddressHierarchyLevel(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'address_hierarchy_level'
 
 
@@ -76,6 +79,7 @@ class Allergy(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'allergy'
 
 
@@ -88,6 +92,7 @@ class AllergyReaction(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'allergy_reaction'
 
 
@@ -100,6 +105,7 @@ class AppframeworkComponentState(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appframework_component_state'
 
 
@@ -109,6 +115,7 @@ class AppframeworkUserApp(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appframework_user_app'
 
 
@@ -133,6 +140,7 @@ class AppointmentschedulingAppointment(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_appointment'
 
 
@@ -154,6 +162,7 @@ class AppointmentschedulingAppointmentBlock(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_appointment_block'
 
 
@@ -182,6 +191,7 @@ class AppointmentschedulingAppointmentRequest(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_appointment_request'
 
 
@@ -194,6 +204,7 @@ class AppointmentschedulingAppointmentStatusHistory(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_appointment_status_history'
 
 
@@ -216,6 +227,7 @@ class AppointmentschedulingAppointmentType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_appointment_type'
 
 
@@ -225,6 +237,7 @@ class AppointmentschedulingBlockTypeMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_block_type_map'
         unique_together = (('appointment_type', 'appointment_block'),)
 
@@ -249,6 +262,7 @@ class AppointmentschedulingProviderSchedule(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_provider_schedule'
 
 
@@ -258,6 +272,7 @@ class AppointmentschedulingProviderTypeMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_provider_type_map'
         unique_together = (('appointment_type', 'provider_schedule'),)
 
@@ -279,6 +294,7 @@ class AppointmentschedulingTimeSlot(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'appointmentscheduling_time_slot'
 
 
@@ -292,6 +308,7 @@ class CalculationRegistration(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'calculation_registration'
 
 
@@ -312,6 +329,7 @@ class CareSetting(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'care_setting'
 
 
@@ -327,6 +345,7 @@ class ChartsearchBookmark(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_bookmark'
 
 
@@ -339,6 +358,7 @@ class ChartsearchCategories(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_categories'
 
 
@@ -351,6 +371,7 @@ class ChartsearchCategoryDisplayname(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_category_displayname'
 
 
@@ -364,6 +385,7 @@ class ChartsearchHistory(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_history'
 
 
@@ -380,6 +402,7 @@ class ChartsearchNote(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_note'
 
 
@@ -398,6 +421,7 @@ class ChartsearchPreference(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_preference'
 
 
@@ -408,6 +432,7 @@ class ChartsearchSynonymGroups(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_synonym_groups'
 
 
@@ -418,6 +443,7 @@ class ChartsearchSynonyms(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'chartsearch_synonyms'
 
 
@@ -427,6 +453,7 @@ class ClobDatatypeStorage(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'clob_datatype_storage'
 
 
@@ -446,6 +473,7 @@ class Cohort(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'cohort'
 
 
@@ -465,6 +493,7 @@ class CohortMember(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'cohort_member'
 
 
@@ -511,6 +540,7 @@ class ConceptAnswer(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_answer'
 
 
@@ -531,6 +561,7 @@ class ConceptAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_attribute'
 
 
@@ -556,6 +587,7 @@ class ConceptAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_attribute_type'
 
 
@@ -575,6 +607,7 @@ class ConceptClass(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_class'
 
 
@@ -584,6 +617,7 @@ class ConceptComplex(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_complex'
 
 
@@ -602,6 +636,7 @@ class ConceptDatatype(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_datatype'
 
 
@@ -618,6 +653,7 @@ class ConceptDescription(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_description'
 
 
@@ -638,6 +674,7 @@ class ConceptMapType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_map_type'
 
 
@@ -684,6 +721,7 @@ class ConceptNameTag(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_name_tag'
 
 
@@ -693,6 +731,7 @@ class ConceptNameTagMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_name_tag_map'
 
 
@@ -710,6 +749,7 @@ class ConceptNumeric(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_numeric'
 
 
@@ -732,6 +772,7 @@ class ConceptProposal(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_proposal'
 
 
@@ -741,6 +782,7 @@ class ConceptProposalTagMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_proposal_tag_map'
 
 
@@ -757,6 +799,7 @@ class ConceptReferenceMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_reference_map'
 
 
@@ -778,6 +821,7 @@ class ConceptReferenceSource(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_reference_source'
 
 
@@ -800,6 +844,7 @@ class ConceptReferenceTerm(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_reference_term'
 
 
@@ -816,13 +861,16 @@ class ConceptReferenceTermMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_reference_term_map'
 
 
 class ConceptSet(models.Model):
     concept_set_id = models.AutoField(primary_key=True)
     concept_id = models.IntegerField()
-    concept_set = models.ForeignKey(Concept, models.DO_NOTHING, db_column='concept_set')
+    # The field 'concept_set' clashes with the field 'concept_set_id' from model 'openmrs.conceptset'.
+    # appending _omrs to disambiguate, and make clear that this follows the OpenMRS API
+    concept_set_omrs = models.ForeignKey(Concept, models.DO_NOTHING, db_column='concept_set')
     sort_weight = models.FloatField(blank=True, null=True)
     creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator')
     date_created = models.DateTimeField()
@@ -830,6 +878,7 @@ class ConceptSet(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_set'
 
 
@@ -842,6 +891,7 @@ class ConceptStateConversion(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_state_conversion'
         unique_together = (('program_workflow', 'concept'),)
 
@@ -854,6 +904,7 @@ class ConceptStopWord(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'concept_stop_word'
         unique_together = (('word', 'locale'),)
 
@@ -884,6 +935,7 @@ class Conditions(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'conditions'
 
 
@@ -910,6 +962,7 @@ class Drug(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'drug'
 
 
@@ -922,6 +975,7 @@ class DrugIngredient(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'drug_ingredient'
         unique_together = (('drug', 'ingredient'),)
 
@@ -948,6 +1002,7 @@ class DrugOrder(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'drug_order'
 
 
@@ -968,6 +1023,7 @@ class DrugReferenceMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'drug_reference_map'
 
 
@@ -992,6 +1048,7 @@ class EmrapiConditions(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'emrapi_conditions'
 
 
@@ -1015,6 +1072,7 @@ class Encounter(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'encounter'
 
 
@@ -1040,6 +1098,7 @@ class EncounterDiagnosis(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'encounter_diagnosis'
 
 
@@ -1060,6 +1119,7 @@ class EncounterProvider(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'encounter_provider'
 
 
@@ -1079,6 +1139,7 @@ class EncounterRole(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'encounter_role'
 
 
@@ -1100,6 +1161,7 @@ class EncounterType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'encounter_type'
 
 
@@ -1121,6 +1183,7 @@ class FhirConceptSource(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_concept_source'
 
 
@@ -1143,6 +1206,7 @@ class FhirDiagnosticReport(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_diagnostic_report'
 
 
@@ -1152,6 +1216,7 @@ class FhirDiagnosticReportPerformers(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_diagnostic_report_performers'
         unique_together = (('diagnostic_report', 'provider'),)
 
@@ -1162,6 +1227,7 @@ class FhirDiagnosticReportResults(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_diagnostic_report_results'
         unique_together = (('diagnostic_report', 'obs'),)
 
@@ -1182,6 +1248,7 @@ class FhirDurationUnitMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_duration_unit_map'
 
 
@@ -1201,6 +1268,7 @@ class FhirEncounterClassMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_encounter_class_map'
 
 
@@ -1220,6 +1288,7 @@ class FhirObservationCategoryMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_observation_category_map'
 
 
@@ -1241,6 +1310,7 @@ class FhirPatientIdentifierSystem(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_patient_identifier_system'
 
 
@@ -1263,6 +1333,7 @@ class FhirReference(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_reference'
 
 
@@ -1289,6 +1360,7 @@ class FhirTask(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_task'
 
 
@@ -1298,6 +1370,7 @@ class FhirTaskBasedOnReference(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_task_based_on_reference'
 
 
@@ -1323,6 +1396,7 @@ class FhirTaskInput(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_task_input'
 
 
@@ -1348,6 +1422,7 @@ class FhirTaskOutput(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'fhir_task_output'
 
 
@@ -1373,6 +1448,7 @@ class Field(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'field'
 
 
@@ -1385,6 +1461,7 @@ class FieldAnswer(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'field_answer'
         unique_together = (('field', 'answer'),)
 
@@ -1400,6 +1477,7 @@ class FieldType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'field_type'
 
 
@@ -1425,6 +1503,7 @@ class Form(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'form'
 
 
@@ -1448,6 +1527,7 @@ class FormField(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'form_field'
 
 
@@ -1466,6 +1546,7 @@ class FormResource(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'form_resource'
         unique_together = (('form', 'name'),)
 
@@ -1484,6 +1565,7 @@ class GlobalProperty(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'global_property'
 
 
@@ -1498,6 +1580,7 @@ class Hl7InArchive(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'hl7_in_archive'
 
 
@@ -1513,6 +1596,7 @@ class Hl7InError(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'hl7_in_error'
 
 
@@ -1529,6 +1613,7 @@ class Hl7InQueue(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'hl7_in_queue'
 
 
@@ -1542,6 +1627,7 @@ class Hl7Source(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'hl7_source'
 
 
@@ -1562,6 +1648,7 @@ class HtmlformentryHtmlForm(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'htmlformentry_html_form'
 
 
@@ -1575,6 +1662,7 @@ class IdgenAutoGenerationOption(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_auto_generation_option'
 
 
@@ -1588,6 +1676,7 @@ class IdgenIdPool(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_id_pool'
 
 
@@ -1607,6 +1696,7 @@ class IdgenIdentifierSource(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_identifier_source'
 
 
@@ -1619,6 +1709,7 @@ class IdgenLogEntry(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_log_entry'
 
 
@@ -1631,6 +1722,7 @@ class IdgenPooledIdentifier(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_pooled_identifier'
 
 
@@ -1642,6 +1734,7 @@ class IdgenRemoteSource(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_remote_source'
 
 
@@ -1651,6 +1744,7 @@ class IdgenReservedIdentifier(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_reserved_identifier'
 
 
@@ -1666,6 +1760,7 @@ class IdgenSeqIdGen(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'idgen_seq_id_gen'
 
 
@@ -1687,6 +1782,7 @@ class Liquibasechangelog(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'liquibasechangelog'
         unique_together = (('id', 'author', 'filename'),)
 
@@ -1699,6 +1795,7 @@ class Liquibasechangeloglock(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'liquibasechangeloglock'
 
 
@@ -1741,6 +1838,7 @@ class Location(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'location'
 
 
@@ -1761,6 +1859,7 @@ class LocationAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'location_attribute'
 
 
@@ -1786,6 +1885,7 @@ class LocationAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'location_attribute_type'
 
 
@@ -1805,6 +1905,7 @@ class LocationTag(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'location_tag'
 
 
@@ -1814,6 +1915,7 @@ class LocationTagMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'location_tag_map'
         unique_together = (('location', 'location_tag'),)
 
@@ -1834,6 +1936,7 @@ class MetadatamappingMetadataSet(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'metadatamapping_metadata_set'
 
 
@@ -1857,6 +1960,7 @@ class MetadatamappingMetadataSetMember(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'metadatamapping_metadata_set_member'
         unique_together = (('metadata_set', 'metadata_uuid'),)
 
@@ -1877,6 +1981,7 @@ class MetadatamappingMetadataSource(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'metadatamapping_metadata_source'
 
 
@@ -1900,6 +2005,7 @@ class MetadatamappingMetadataTermMapping(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'metadatamapping_metadata_term_mapping'
         unique_together = (('metadata_source', 'code'),)
 
@@ -1917,6 +2023,7 @@ class MetadatasharingExportedPackage(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'metadatasharing_exported_package'
 
 
@@ -1932,6 +2039,7 @@ class MetadatasharingImportedItem(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'metadatasharing_imported_item'
 
 
@@ -1951,6 +2059,7 @@ class MetadatasharingImportedPackage(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'metadatasharing_imported_package'
 
 
@@ -1971,6 +2080,7 @@ class Note(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'note'
 
 
@@ -1988,6 +2098,7 @@ class NotificationAlert(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'notification_alert'
 
 
@@ -2000,6 +2111,7 @@ class NotificationAlertRecipient(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'notification_alert_recipient'
         unique_together = (('alert', 'user'),)
 
@@ -2016,6 +2128,7 @@ class NotificationTemplate(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'notification_template'
 
 
@@ -2074,6 +2187,7 @@ class OpenconceptlabImport(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'openconceptlab_import'
 
 
@@ -2091,6 +2205,7 @@ class OpenconceptlabItem(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'openconceptlab_item'
 
 
@@ -2110,6 +2225,7 @@ class OrderFrequency(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_frequency'
 
 
@@ -2133,6 +2249,7 @@ class OrderGroup(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_group'
 
 
@@ -2153,6 +2270,7 @@ class OrderGroupAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_group_attribute'
 
 
@@ -2178,6 +2296,7 @@ class OrderGroupAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_group_attribute_type'
 
 
@@ -2199,6 +2318,7 @@ class OrderSet(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_set'
 
 
@@ -2219,6 +2339,7 @@ class OrderSetAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_set_attribute'
 
 
@@ -2244,6 +2365,7 @@ class OrderSetAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_set_attribute_type'
 
 
@@ -2267,6 +2389,7 @@ class OrderSetMember(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_set_member'
 
 
@@ -2288,6 +2411,7 @@ class OrderType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_type'
 
 
@@ -2297,6 +2421,7 @@ class OrderTypeClassMap(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'order_type_class_map'
         unique_together = (('order_type', 'concept_class'),)
 
@@ -2336,11 +2461,12 @@ class Orders(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'orders'
 
 
 class Patient(models.Model):
-    patient = models.OneToOneField('Person', models.DO_NOTHING, primary_key=True)
+    patient = models.OneToOneField('Person', models.DO_NOTHING, primary_key=True, related_name='patient')
     creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator')
     date_created = models.DateTimeField()
     changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True)
@@ -2351,8 +2477,12 @@ class Patient(models.Model):
     void_reason = models.CharField(max_length=255, blank=True, null=True)
     allergy_status = models.CharField(max_length=50)
 
+    def __str__(self):
+        return str(self.patient)
+
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'patient'
 
 
@@ -2375,6 +2505,7 @@ class PatientIdentifier(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'patient_identifier'
 
 
@@ -2401,6 +2532,7 @@ class PatientIdentifierType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'patient_identifier_type'
 
 
@@ -2424,6 +2556,7 @@ class PatientProgram(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'patient_program'
 
 
@@ -2444,6 +2577,7 @@ class PatientProgramAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'patient_program_attribute'
 
 
@@ -2465,6 +2599,7 @@ class PatientState(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'patient_state'
 
 
@@ -2542,6 +2677,7 @@ class PersonAddress(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'person_address'
 
 
@@ -2562,6 +2698,7 @@ class PersonAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'person_attribute'
 
 
@@ -2586,6 +2723,7 @@ class PersonAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'person_attribute_type'
 
 
@@ -2606,6 +2744,7 @@ class PersonMergeLog(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'person_merge_log'
 
 
@@ -2621,10 +2760,10 @@ class PersonName(models.Model):
     family_name2 = models.CharField(max_length=50, blank=True, null=True)
     family_name_suffix = models.CharField(max_length=50, blank=True, null=True)
     degree = models.CharField(max_length=50, blank=True, null=True)
-    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator')
+    creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator', related_name="person_names_created")
     date_created = models.DateTimeField()
     voided = models.IntegerField()
-    voided_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='voided_by', blank=True, null=True)
+    voided_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='voided_by', blank=True, null=True, related_name="person_names_voided")
     date_voided = models.DateTimeField(blank=True, null=True)
     void_reason = models.CharField(max_length=255, blank=True, null=True)
     changed_by = models.IntegerField(blank=True, null=True)
@@ -2648,6 +2787,7 @@ class Privilege(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'privilege'
 
 
@@ -2666,6 +2806,7 @@ class Program(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'program'
 
 
@@ -2691,6 +2832,7 @@ class ProgramAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'program_attribute_type'
 
 
@@ -2707,6 +2849,7 @@ class ProgramWorkflow(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'program_workflow'
 
 
@@ -2725,6 +2868,7 @@ class ProgramWorkflowState(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'program_workflow_state'
 
 
@@ -2748,6 +2892,7 @@ class Provider(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'provider'
 
 
@@ -2768,6 +2913,7 @@ class ProviderAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'provider_attribute'
 
 
@@ -2793,6 +2939,7 @@ class ProviderAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'provider_attribute_type'
 
 
@@ -2812,6 +2959,7 @@ class ProvidermanagementProviderRole(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'providermanagement_provider_role'
 
 
@@ -2821,6 +2969,7 @@ class ProvidermanagementProviderRoleProviderAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'providermanagement_provider_role_provider_attribute_type'
 
 
@@ -2830,6 +2979,7 @@ class ProvidermanagementProviderRoleRelationshipType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'providermanagement_provider_role_relationship_type'
 
 
@@ -2839,6 +2989,7 @@ class ProvidermanagementProviderRoleSuperviseeProviderRole(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'providermanagement_provider_role_supervisee_provider_role'
 
 
@@ -2861,6 +3012,7 @@ class ProvidermanagementProviderSuggestion(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'providermanagement_provider_suggestion'
 
 
@@ -2884,13 +3036,16 @@ class ProvidermanagementSupervisionSuggestion(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'providermanagement_supervision_suggestion'
 
 
 class Relationship(models.Model):
     relationship_id = models.AutoField(primary_key=True)
     person_a = models.ForeignKey(Person, models.DO_NOTHING, db_column='person_a')
-    relationship = models.ForeignKey('RelationshipType', models.DO_NOTHING, db_column='relationship')
+    # The field 'relationship' clashes with the field 'relationship_id' from model 'openmrs.relationship'
+    # we work around by appending _omrs
+    relationship_omrs = models.ForeignKey('RelationshipType', models.DO_NOTHING, db_column='relationship')
     person_b = models.ForeignKey(Person, models.DO_NOTHING, db_column='person_b')
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
@@ -2906,6 +3061,7 @@ class Relationship(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'relationship'
 
 
@@ -2928,6 +3084,7 @@ class RelationshipType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'relationship_type'
 
 
@@ -2950,6 +3107,7 @@ class ReportObject(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'report_object'
 
 
@@ -2962,6 +3120,7 @@ class ReportSchemaXml(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'report_schema_xml'
 
 
@@ -2983,6 +3142,7 @@ class ReportingReportDesign(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'reporting_report_design'
 
 
@@ -3005,6 +3165,7 @@ class ReportingReportDesignResource(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'reporting_report_design_resource'
 
 
@@ -3029,6 +3190,7 @@ class ReportingReportProcessor(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'reporting_report_processor'
 
 
@@ -3054,6 +3216,7 @@ class ReportingReportRequest(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'reporting_report_request'
 
 
@@ -3064,6 +3227,7 @@ class Role(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'role'
 
 
@@ -3073,6 +3237,7 @@ class RolePrivilege(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'role_privilege'
         unique_together = (('privilege', 'role'),)
 
@@ -3083,6 +3248,7 @@ class RoleRole(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'role_role'
         unique_together = (('parent_role', 'child_role'),)
 
@@ -3106,6 +3272,7 @@ class SchedulerTaskConfig(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'scheduler_task_config'
 
 
@@ -3117,6 +3284,7 @@ class SchedulerTaskConfigProperty(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'scheduler_task_config_property'
 
 
@@ -3140,6 +3308,7 @@ class SerializedObject(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'serialized_object'
 
 
@@ -3153,6 +3322,7 @@ class TestOrder(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'test_order'
 
 
@@ -3167,6 +3337,7 @@ class UiframeworkUserDefinedPageView(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'uiframework_user_defined_page_view'
 
 
@@ -3177,6 +3348,7 @@ class UserProperty(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'user_property'
         unique_together = (('user', 'property'),)
 
@@ -3187,6 +3359,7 @@ class UserRole(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'user_role'
         unique_together = (('role', 'user'),)
 
@@ -3214,6 +3387,7 @@ class Users(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'users'
 
 
@@ -3237,6 +3411,7 @@ class Visit(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'visit'
 
 
@@ -3257,6 +3432,7 @@ class VisitAttribute(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'visit_attribute'
 
 
@@ -3282,6 +3458,7 @@ class VisitAttributeType(models.Model):
 
     class Meta:
         managed = False
+        default_related_name = '+'
         db_table = 'visit_attribute_type'
 
 
@@ -3289,12 +3466,12 @@ class VisitType(models.Model):
     visit_type_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=1024, blank=True, null=True)
-    creator = models.ForeignKey(Users, models.DO_NOTHING, db_column='creator')
+    creator = models.ForeignKey(Users, models.DO_NOTHING, db_column='creator', related_name='VisitTypesCreated')
     date_created = models.DateTimeField()
-    changed_by = models.ForeignKey(Users, models.DO_NOTHING, db_column='changed_by', blank=True, null=True)
+    changed_by = models.ForeignKey(Users, models.DO_NOTHING, db_column='changed_by', blank=True, null=True, related_name='VisitTypesChanged')
     date_changed = models.DateTimeField(blank=True, null=True)
     retired = models.IntegerField()
-    retired_by = models.ForeignKey(Users, models.DO_NOTHING, db_column='retired_by', blank=True, null=True)
+    retired_by = models.ForeignKey(Users, models.DO_NOTHING, db_column='retired_by', blank=True, null=True, related_name='VisitTypesRetired')
     date_retired = models.DateTimeField(blank=True, null=True)
     retire_reason = models.CharField(max_length=255, blank=True, null=True)
     uuid = models.CharField(unique=True, max_length=38)

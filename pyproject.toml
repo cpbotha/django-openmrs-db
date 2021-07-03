@@ -8,6 +8,7 @@ readme = "README.md"
 homepage = "https://github.com/cpbotha/django-openmrs-db"
 repository = "https://github.com/cpbotha/django-openmrs-db"
 keywords = ["django", "openmrs"]
+packages = [ {include ="openmrs_db"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"

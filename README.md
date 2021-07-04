@@ -1,5 +1,7 @@
 Welcome to django-openmrs-db, a [Django](https://www.djangoproject.com/) app for
-talking directly to the [OpenMRS](https://openmrs.org/) database.
+talking directly to the [OpenMRS](https://openmrs.org/) database of [OpenMRS
+Platform
+2.4.0.e4adbd](https://github.com/openmrs/openmrs-core/commit/e4adbdc434a20ecf53094fe081d16038de3d0bd2), released on December 21, 2020.
 
 This work is copyright Charl P. Botha <cpbotha@vxlabs.com> 2021 and is made
 available under the open source BSD 3-clause license.

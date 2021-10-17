@@ -525,6 +525,9 @@ class Concept(models.Model):
 
     def __str__(self: 'Concept'):
         # there can be multiple ConceptNames per locale, so we pick the preferred one
+        return self.get_preferred_name()
+
+    def get_preferred_name(self):
         return self.conceptname_set.get(locale='en', locale_preferred=1).name
 
     class Meta:
@@ -1071,13 +1074,17 @@ class Encounter(models.Model):
     void_reason = models.CharField(max_length=255, blank=True, null=True)
     changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True)
     date_changed = models.DateTimeField(blank=True, null=True)
-    visit = models.ForeignKey('Visit', models.DO_NOTHING, blank=True, null=True)
+    visit = models.ForeignKey('Visit', models.DO_NOTHING, blank=True, null=True, related_name="encounter_set")
     uuid = models.CharField(unique=True, max_length=38)
+
+    def __str__(self):
+        return f"{self.date_changed} - {self.encounter_type.name}"
 
     class Meta:
         managed = False
         default_related_name = '+'
         db_table = 'encounter'
+        ordering = ['-date_changed']
 
 
 class EncounterDiagnosis(models.Model):
@@ -1162,6 +1169,9 @@ class EncounterType(models.Model):
     view_privilege = models.ForeignKey('Privilege', models.DO_NOTHING, db_column='view_privilege', blank=True, null=True)
     changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True)
     date_changed = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self: 'EncounterType'):
+        return self.name
 
     class Meta:
         managed = False
@@ -2481,6 +2491,7 @@ class Patient(models.Model):
     void_reason = models.CharField(max_length=255, blank=True, null=True)
     allergy_status = models.CharField(max_length=50)
 
+    # return the Patient __str__ which has lastname, firstname, DoB
     def __str__(self):
         return str(self.patient)
 
@@ -2628,9 +2639,12 @@ class Person(models.Model):
     birthtime = models.TimeField(blank=True, null=True)
     cause_of_death_non_coded = models.CharField(max_length=255, blank=True, null=True)
 
+    def get_preferred_name(self) -> 'PersonName':
+        return self.personname_set.get(preferred=1)
+
     def __str__(self: 'Person'):
         try:
-            name0 = self.personname_set.get(preferred=1)
+            name0 = self.get_preferred_name()
         except PersonName.DoesNotExist:
             name0 = "NO NAME"
         return f"{str(name0)} // DoB {self.birthdate}"
@@ -3389,6 +3403,9 @@ class Users(models.Model):
     activation_key = models.CharField(max_length=255, blank=True, null=True)
     email = models.CharField(unique=True, max_length=255, blank=True, null=True)
 
+    def __str__(self: 'Users'):
+        return f"{self.user_id} - {self.username} - {self.email}"
+
     class Meta:
         managed = False
         default_related_name = '+'
@@ -3413,10 +3430,15 @@ class Visit(models.Model):
     void_reason = models.CharField(max_length=255, blank=True, null=True)
     uuid = models.CharField(unique=True, max_length=38)
 
+    def __str__(self):
+        return f"{self.date_started} - {self.location.name} - {self.visit_type.name}"
+
     class Meta:
         managed = False
         default_related_name = '+'
         db_table = 'visit'
+        # most recent visit first
+        ordering = ['-date_started']
 
 
 class VisitAttribute(models.Model):

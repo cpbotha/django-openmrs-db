@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from .models import Concept, EncounterType, Obs, Patient, Person, PersonName, Users, Visit
+from .models import Concept, ConceptName, EncounterType, Obs, Patient, Person, PersonName, Users, Visit
 #from .models import Liquibasechangelog
 
 admin.site.register(Concept)
+admin.site.register(ConceptName)
 admin.site.register(EncounterType)
 admin.site.register(Obs)
 admin.site.register(Patient)

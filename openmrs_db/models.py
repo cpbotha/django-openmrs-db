@@ -17,7 +17,10 @@
 #   db_table and db_column instances the same
 # - as far as possible, keep field names the same for parity with the OpenMRS API
 
+import uuid
+
 from django.db import models
+from django.utils import timezone
 
 
 class AddressHierarchyAddressToEntryMap(models.Model):
@@ -503,16 +506,27 @@ class CohortMember(models.Model):
 
 # important to understand concepts. Please read at least this:
 # https://wiki.openmrs.org/display/docs/Concept+Dictionary+Basics
+# this shows each of the datatypes in turn:
+# https://wiki.openmrs.org/display/docs/Managing+Concept+Datatypes
+# there perhaps too much flexibility here:
+# https://wiki.openmrs.org/display/docs/Concept+Best+Practices
+#
+# more info about how concepts are configured to be different answers to a question concept:
+# https://guide.openmrs.org/en/Configuration/managing-concepts-and-metadata.html
+# https://wiki.openmrs.org/pages/viewpage.action?pageId=36671129
+# in short:
+# 1. question Concept has datatype=coded, there are various possible answers m2m linked via ConceptAnswer
+# 2. observation has datatype coded and value_concept = the selected answer Concept
 class Concept(models.Model):
     concept_id = models.AutoField(primary_key=True)
-    retired = models.IntegerField()
+    retired = models.IntegerField(default=0)
     short_name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     form_text = models.TextField(blank=True, null=True)
     datatype = models.ForeignKey('ConceptDatatype', models.DO_NOTHING)
     # the type of concept, e.g. Test, Procedure, etc.
     class_field = models.ForeignKey('ConceptClass', models.DO_NOTHING, db_column='class_id')  # Field renamed because it was a Python reserved word.
-    is_set = models.IntegerField()
+    is_set = models.IntegerField(default=0)
     creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator', related_name="concepts_created")
     date_created = models.DateTimeField()
     version = models.CharField(max_length=50, blank=True, null=True)
@@ -521,11 +535,11 @@ class Concept(models.Model):
     retired_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='retired_by', blank=True, null=True, related_name="concepts_retired")
     date_retired = models.DateTimeField(blank=True, null=True)
     retire_reason = models.CharField(max_length=255, blank=True, null=True)
-    uuid = models.CharField(unique=True, max_length=38)
+    uuid = models.CharField(unique=True, max_length=38, default=uuid.uuid4)
 
     def __str__(self: 'Concept'):
         # there can be multiple ConceptNames per locale, so we pick the preferred one
-        return self.get_preferred_name()
+        return f"{self.concept_id} - {self.get_preferred_name()}"
 
     def get_preferred_name(self):
         return self.conceptname_set.get(locale='en', locale_preferred=1).name
@@ -612,6 +626,9 @@ class ConceptClass(models.Model):
     date_changed = models.DateTimeField(blank=True, null=True)
     changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.concept_class_id} - {self.name}"
+
     class Meta:
         managed = False
         default_related_name = '+'
@@ -635,11 +652,14 @@ class ConceptDatatype(models.Model):
     description = models.CharField(max_length=255, blank=True, null=True)
     creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator')
     date_created = models.DateTimeField()
-    retired = models.IntegerField()
+    retired = models.IntegerField(default=0)
     retired_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='retired_by', blank=True, null=True)
     date_retired = models.DateTimeField(blank=True, null=True)
     retire_reason = models.CharField(max_length=255, blank=True, null=True)
-    uuid = models.CharField(unique=True, max_length=38)
+    uuid = models.CharField(unique=True, max_length=38, default=uuid.uuid4)
+
+    def __str__(self):
+        return f"{self.concept_datatype_id} - {self.name}"
 
     class Meta:
         managed = False
@@ -692,13 +712,13 @@ class ConceptName(models.Model):
     locale = models.CharField(max_length=50)
     locale_preferred = models.IntegerField(blank=True, null=True)
     creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator', related_name="conceptnames_created")
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(default=timezone.now)
     concept_name_type = models.CharField(max_length=50, blank=True, null=True)
-    voided = models.IntegerField()
+    voided = models.IntegerField(default=0)
     voided_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='voided_by', blank=True, null=True, related_name="conceptnames_voided")
     date_voided = models.DateTimeField(blank=True, null=True)
     void_reason = models.CharField(max_length=255, blank=True, null=True)
-    uuid = models.CharField(unique=True, max_length=38)
+    uuid = models.CharField(unique=True, max_length=38, default=uuid.uuid4)
     date_changed = models.DateTimeField(blank=True, null=True)
     changed_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='changed_by', blank=True, null=True, related_name="conceptnames_changed")
 
@@ -2155,8 +2175,10 @@ class Obs(models.Model):
     order = models.ForeignKey('Orders', models.DO_NOTHING, blank=True, null=True)
     obs_datetime = models.DateTimeField()
     location = models.ForeignKey(Location, models.DO_NOTHING, blank=True, null=True)
+    # https://wiki.openmrs.org/display/docs/Obs+Group
     obs_group = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
     accession_number = models.CharField(max_length=255, blank=True, null=True)
+    # https://wiki.openmrs.org/display/docs/Value+Group+-+Handling+Observations+With+Multiple+Answers
     value_group_id = models.IntegerField(blank=True, null=True)
     # come up with better related_name when I better understand this relation
     value_coded = models.ForeignKey(Concept, models.DO_NOTHING, db_column='value_coded', blank=True, null=True, related_name="+")
@@ -2166,17 +2188,20 @@ class Obs(models.Model):
     value_numeric = models.FloatField(blank=True, null=True)
     value_modifier = models.CharField(max_length=2, blank=True, null=True)
     value_text = models.TextField(blank=True, null=True)
+    # openmrs can have different complex obs handlers defined to interpret the data stored here
+    # https://wiki.openmrs.org/display/docs/Complex+Obs+Handler+Technical+Overview
     value_complex = models.CharField(max_length=1000, blank=True, null=True)
     comments = models.CharField(max_length=255, blank=True, null=True)
     creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='creator', related_name="observations_created")
     date_created = models.DateTimeField()
-    voided = models.IntegerField()
+    voided = models.IntegerField(default=0)
     voided_by = models.ForeignKey('Users', models.DO_NOTHING, db_column='voided_by', blank=True, null=True)
     date_voided = models.DateTimeField(blank=True, null=True)
     void_reason = models.CharField(max_length=255, blank=True, null=True)
-    uuid = models.CharField(unique=True, max_length=38)
+    uuid = models.CharField(unique=True, max_length=38, default=uuid.uuid4)
     previous_version = models.ForeignKey('self', models.DO_NOTHING, db_column='previous_version', blank=True, null=True, related_name="subsequent_versions")
     form_namespace_and_path = models.CharField(max_length=255, blank=True, null=True)
+    # https://talk.openmrs.org/t/obs-status-updating-automatically/10968/5
     status = models.CharField(max_length=16)
     interpretation = models.CharField(max_length=32, blank=True, null=True)
 
@@ -3502,6 +3527,8 @@ class VisitType(models.Model):
     retire_reason = models.CharField(max_length=255, blank=True, null=True)
     uuid = models.CharField(unique=True, max_length=38)
 
+    def __str__(self):
+        return f"{self.visit_type_id} - {self.name}"
     class Meta:
         managed = False
         db_table = 'visit_type'
